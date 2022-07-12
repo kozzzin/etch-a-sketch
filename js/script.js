@@ -1,25 +1,34 @@
 
 // const cont = document.querySelector('#container');
 
-
-let color = "#ff0000";
-
 document.addEventListener('DOMContentLoaded',function(e){
-
+    let colorOption = 'one';
     const range = document.querySelector('#grid-range');
+    let color = document.querySelector('#pen-color').value;
 
     createGrid(range.value);
 
     const cont = document.querySelector('#grid');
     let changeColor = cont.addEventListener('mouseover', function(e) {
         // one color e.target.style.backgroundColor = color;
-
-        // random color
-        e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
+        if (colorOption == 'random') {
+            e.target.style.backgroundColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
+        } else if (colorOption == 'shades') {
+            let currentColor = window.getComputedStyle(e.target).backgroundColor;
+            let rgbColors = /rgb\((.*)\)/i.exec(currentColor);
+            let rgbColorArray = rgbColors[1].split(', ');
+            rgbColorArray = rgbColorArray.map(e => Math.round(parseInt(e) *  0.9));
+            rgbColors = rgbColorArray.toString();
+            e.target.style.backgroundColor = `rgb(${rgbColors})`;
+        } else {
+            e.target.style.backgroundColor = color;
+        } 
+        
 
         // shades of grey
+
         
-        e.target.style.backgroundColor = color;
+        
     });
 
     
@@ -39,13 +48,23 @@ document.addEventListener('DOMContentLoaded',function(e){
     });
 
 
-    document.querySelector('#favcolor').addEventListener('input', function(e){
+    document.querySelector('#pen-color').addEventListener('input', function(e){
         color = e.target.value;
     });
 
     document.querySelector('#clear').addEventListener('click', function() {
         cont.innerHTML = '';
         createGrid(range.value);
+    });
+
+    const colorButtons = document.querySelectorAll('#choose-color button');
+    colorButtons.forEach((b) => {
+        b.addEventListener('click', function(e){
+            document.querySelectorAll('.selected').forEach(e => e.classList.remove('selected'));
+            e.target.classList.add('selected');
+            
+            colorOption = e.target.getAttribute('id');
+        });
     });
 
 })
