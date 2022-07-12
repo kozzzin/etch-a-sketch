@@ -1,0 +1,102 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    min-width: 100%;
+    min-height: 100%;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: black;
+}
+
+#main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    height: 80%;
+}
+
+#interface {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: rgb(255, 255, 255);
+    height: 100%;
+    flex: 1 1 100px;
+}
+
+#choose-color {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#interface button,
+#interface input {
+    width: 100%;
+}
+
+#interface button {
+    box-shadow: 0;
+    padding: 20px;
+    font-weight: bold;
+    background-color: bisque;
+    border: 0;
+}
+
+#interface button:hover {
+    background-color: coral;
+}
+
+#interface .selected {
+    background-color: coral;
+}
+
+#interface #clear {
+    background-color: darkorange;
+}
+
+#interface #clear:hover {
+    background-color: coral;
+}
+
+
+#clear {
+    align-self: flex-end;
+}
+ 
+
+#grid {
+    display: flex;
+    background-color: #ccc;
+    aspect-ratio: 1 / 1;
+    justify-content: stretch;
+    align-items: stretch;
+    flex-wrap: wrap;
+    height: 100%;
+    flex: 9;
+}
+
+#grid div {
+    background-color: rgb(255, 255, 255);
+    aspect-ratio: 1 / 1;
+}
+
+
+
+#grid-size {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+
