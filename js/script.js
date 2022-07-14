@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded',function(e){
             let currentColor = window.getComputedStyle(e.target).backgroundColor;
             let rgbColors = /rgb\((.*)\)/i.exec(currentColor);
             let rgbColorArray = rgbColors[1].split(', ');
-            rgbColorArray = rgbColorArray.map(e => Math.round(parseInt(e) *  0.9));
+            rgbColorArray = rgbColorArray.map(e => Math.round(parseInt(e) - 25));
             rgbColors = rgbColorArray.toString();
             e.target.style.backgroundColor = `rgb(${rgbColors})`;
         } else {
